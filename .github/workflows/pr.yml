@@ -11,7 +11,6 @@ jobs:
       - name: Check GitHub CLI
         run: |
           gh version
-          echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
 
       - name: Set up local repository
         run: |
@@ -22,6 +21,7 @@ jobs:
 
       - name: Commit changes
         run: |
+          git remote set-url origin https://andrta31:${{ secrets.GITHUB_TOKEN }}@github.com/andretai/sandbox-pr-automation.git
           git status
           git checkout -b to_be_merged
           echo "new line" >> file.txt
