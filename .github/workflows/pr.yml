@@ -33,5 +33,6 @@ jobs:
       - name: Create pull request
         run: |
           gh pr create --title "Update file.txt" --body "Add new line to file.txt."
+        working-directory: ./pr-auto
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
