@@ -11,7 +11,13 @@ jobs:
       - name: Check GitHub CLI
         run: gh version
 
+      - name: Set up local repository
+        run: git clone https://github.com/andretai/sandbox-pr-automation.git pr-auto
+
       - name: Test gh cli
-        run: gh extension list  
+        run: |
+          git status \
+          git checkout -b to_be_merged
+        working-directory: ./pr-auto
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
