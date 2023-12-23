@@ -1,0 +1,12 @@
+name: Create Pull Request
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check GitHub CLI
+        run: gh version
