@@ -9,7 +9,9 @@ jobs:
 
     steps:
       - name: Check GitHub CLI
-        run: gh version
+        run: |
+          gh version
+          echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
 
       - name: Set up local repository
         run: |
