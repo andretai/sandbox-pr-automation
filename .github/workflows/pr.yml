@@ -14,10 +14,18 @@ jobs:
       - name: Set up local repository
         run: git clone https://github.com/andretai/sandbox-pr-automation.git pr-auto
 
-      - name: Test gh cli
+      - name: Commit changes
         run: |
-          git status \
+          git status
           git checkout -b to_be_merged
+          echo "new line" >> file.txt
+          git add .
+          git commit -m "Update file.txt"
+          git push
         working-directory: ./pr-auto
+
+      - name: Create pull request
+        run: |
+          gh pr create --title "Update file.txt" --body "Add new line to file.txt."
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
