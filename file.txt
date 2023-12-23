@@ -1,4 +1,4 @@
 Hello, world!
 
 new line
-new line
+new linenew line
