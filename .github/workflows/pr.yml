@@ -10,3 +10,6 @@ jobs:
     steps:
       - name: Check GitHub CLI
         run: gh version
+
+      - name: Check GitHub Secrets (Caution)
+        run: echo ${{ secrets.GITHUB_TOKEN }}
