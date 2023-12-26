@@ -10,32 +10,7 @@ jobs:
     steps:
       - name: Check GitHub CLI
         run: |
-          gh version
-
-      - name: Set up local repository
-        run: |
-          git config --global user.email "andr.ta.31@gmail.com"
-          git config --global user.name "andrta31"
-          git config --global --add --bool push.autoSetupRemote true
-          git clone https://github.com/andretai/sandbox-pr-automation.git pr-auto
-
-      - name: Commit changes
-        run: |
-          git remote set-url origin https://andrta31:${{ secrets.GITHUB_TOKEN }}@github.com/andretai/sandbox-pr-automation.git
-          git status
-          git checkout -b to_be_merged
-          echo "new line" >> file.txt
-          git add .
-          git commit -m "Update file.txt"
-          git push
-        working-directory: ./pr-auto
-
-      - name: Create pull request
-        run: |
-          gh pr create --title "Update file.txt" --body "Add new line to file.txt."
-        working-directory: ./pr-auto
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Final
-        run: echo "Hello, world!"
+          echo ${{ github.event_type }}
+          echo ${{ github.event.number }}
+          echo ${{ github.event.base.ref }}
+          echo ${{ github.event.head.ref }}
