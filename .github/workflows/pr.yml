@@ -12,5 +12,5 @@ jobs:
         run: |
           echo ${{ github.event_type }}
           echo ${{ github.event.number }}
-          echo ${{ github.event.base.ref }}
-          echo ${{ github.event.head.ref }}
+          echo ${{ github.base_ref }}
+          echo ${{ github.head_ref }}
