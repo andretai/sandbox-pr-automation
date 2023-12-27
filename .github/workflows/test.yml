@@ -1,0 +1,17 @@
+name: Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check GitHub CLI
+        run: |
+          echo ${{ github.event_type }}
+          echo ${{ github.event.number }}
+          echo ${{ github.base_ref }}
+          echo ${{ github.head_ref }}
+          gh pr list
